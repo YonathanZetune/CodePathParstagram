@@ -67,6 +67,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView timestampTv;
         private TextView numLikesTv;
         private ImageView mediaIv;
+        private ImageView likesIv;
         private ImageView profileIv;
         private LinearLayout bottomBar;
         private LinearLayout topbar;
@@ -80,6 +81,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             numLikesTv = itemView.findViewById(R.id.numLikesTv);
             mediaIv = itemView.findViewById(R.id.mediaIv);
             profileIv = itemView.findViewById(R.id.profileIv);
+            likesIv = itemView.findViewById(R.id.favoriteButton);
             timestampTv = itemView.findViewById(R.id.createdAtTv);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,6 +102,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             usernameTv.setText(post.getUser().getUsername());
             numLikesTv.setText(String.format("%s Likes", post.getPostLikes()));
             timestampTv.setText(post.getCreatedAt().toString());
+
+            likesIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    post.incrPostLikes();
+                    likesIv.setImageDrawable(context.getDrawable(R.drawable.ufi_heart_active));
+                    numLikesTv.setText(String.format("%s Likes", post.getPostLikes()));
+                }
+            });
             profileIv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
