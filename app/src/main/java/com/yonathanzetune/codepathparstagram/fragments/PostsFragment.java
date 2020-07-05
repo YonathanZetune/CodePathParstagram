@@ -40,8 +40,8 @@ public class PostsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private RecyclerView rvPosts;
-    private PostsAdapter adapter;
-    private List<Post> postList;
+    protected PostsAdapter adapter;
+    protected List<Post> postList;
 
     public PostsFragment() {
         // Required empty public constructor
@@ -81,10 +81,12 @@ public class PostsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_posts, container, false);
     }
 
-    private void queryPosts() {
+    protected void queryPosts() {
 
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.setLimit(20);
+        query.addDescendingOrder(Post.CREATED_AT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {

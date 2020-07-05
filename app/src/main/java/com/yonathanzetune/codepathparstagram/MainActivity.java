@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
@@ -31,6 +32,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.yonathanzetune.codepathparstagram.fragments.ComposeFragment;
 import com.yonathanzetune.codepathparstagram.fragments.PostsFragment;
+import com.yonathanzetune.codepathparstagram.fragments.ProfileFragment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView navBar;
     final FragmentManager fragmentManager = getSupportFragmentManager();
+    Toolbar toolbar;
 
 
     @Override
@@ -52,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        toolbar = findViewById(R.id.mainToolbar);
         navBar = findViewById(R.id.bottom_navigation);
+
 
         navBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.profileMi:
 //                        Toast.makeText(MainActivity.this, "profileMi", Toast.LENGTH_SHORT).show();
-                        fragment = new ComposeFragment();
+                        fragment = new ProfileFragment();
                         break;
                     case R.id.composeMi:
 //                        Toast.makeText(MainActivity.this, "composeMi", Toast.LENGTH_SHORT).show();
