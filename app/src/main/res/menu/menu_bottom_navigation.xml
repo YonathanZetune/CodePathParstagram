@@ -6,15 +6,20 @@
         android:id="@+id/homeMi"
         android:icon="@drawable/instagram_home_outline_24"
         android:title="Home"
+        android:iconTint="@color/black"
+
         app:showAsAction="always" />
     <item
         android:id="@+id/composeMi"
         android:icon="@drawable/instagram_new_post_outline_24"
         android:title="Compose"
+        android:iconTint="@color/black"
         app:showAsAction="always" />
     <item
         android:id="@+id/profileMi"
         android:icon="@drawable/instagram_user_outline_24"
+        android:iconTint="@color/black"
+
         android:title="Profile"
         app:showAsAction="always" />
 </menu>

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.mainToolbar);
         navBar = findViewById(R.id.bottom_navigation);
-
+        navBar.setBackgroundColor(getResources().getColor(R.color.white));
 
         navBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
