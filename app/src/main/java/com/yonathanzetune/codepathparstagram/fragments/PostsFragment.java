@@ -130,6 +130,7 @@ public class PostsFragment extends Fragment {
             @Override
             public void onRefresh() {
                 Log.i(TAG, "OnRefresh called");
+                postList.clear();
                 queryPosts();
             }
         });
