@@ -2,15 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:layout_height="wrap_content">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/userNameTv"
+    <LinearLayout
+        android:id="@+id/postTopBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Elon Musk" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/profileIv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/instagram_user_filled_24"
+            tools:srcCompat="@drawable/instagram_user_filled_24" />
+
+        <TextView
+            android:id="@+id/userNameTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elon Musk" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/mediaIv"
@@ -19,10 +37,85 @@
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/descriptionTv"
+    <LinearLayout
+        android:id="@+id/postBottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Introducing the latest Tesla!" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/postButtonsBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/trioPostButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/favoriteButton"
+                    android:contentDescription="favButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ufi_heart"
+                    tools:srcCompat="@drawable/ufi_heart" />
+
+                <ImageView
+                    android:id="@+id/commentButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ufi_comment"
+                    tools:srcCompat="@drawable/ufi_comment" />
+
+                <ImageView
+                    android:id="@+id/messageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/direct"
+                    tools:srcCompat="@drawable/direct" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/saveButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ufi_save"
+                tools:srcCompat="@drawable/ufi_save" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/numLikesTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="324 Likes" />
+        <TextView
+            android:id="@+id/createdAtTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="5 hours ago" />
+
+        <TextView
+            android:id="@+id/descriptionTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Introducing the latest Tesla!" />
+    </LinearLayout>
 </LinearLayout>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.profileMi:
 //                        Toast.makeText(MainActivity.this, "profileMi", Toast.LENGTH_SHORT).show();
-                        fragment = new ProfileFragment();
+                        fragment = new ProfileFragment(true, ParseUser.getCurrentUser());
                         break;
                     case R.id.composeMi:
 //                        Toast.makeText(MainActivity.this, "composeMi", Toast.LENGTH_SHORT).show();

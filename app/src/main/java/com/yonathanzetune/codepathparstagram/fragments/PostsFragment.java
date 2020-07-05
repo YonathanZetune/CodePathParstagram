@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ public class PostsFragment extends Fragment {
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
     protected List<Post> postList;
+    SwipeRefreshLayout swipeRefresh;
 
     public PostsFragment() {
         // Required empty public constructor
@@ -82,6 +84,7 @@ public class PostsFragment extends Fragment {
     }
 
     protected void queryPosts() {
+        swipeRefresh.setRefreshing(true);
 
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
@@ -103,6 +106,8 @@ public class PostsFragment extends Fragment {
 
             }
         });
+        swipeRefresh.setRefreshing(false);
+
 
     }
 
@@ -110,10 +115,24 @@ public class PostsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvPosts = view.findViewById(R.id.rvPosts);
+        swipeRefresh = view.findViewById(R.id.swipeRefresh);
+        swipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         postList = new ArrayList<>();
-        adapter = new PostsAdapter(getContext(), postList);
+        adapter = new PostsAdapter(getContext(), postList, false);
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         queryPosts();
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "OnRefresh called");
+                queryPosts();
+            }
+        });
     }
+
 }
