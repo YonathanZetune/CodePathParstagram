@@ -1,8 +1,8 @@
-# Project 3 - *Name of App Here*
+# Project 3 - *Parstagram*
 
-**Name of your app** is a photo sharing app using Parse as its backend.
+**Parstagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **18** hours spent in total
 
 ## User Stories
 
@@ -63,7 +63,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2020 Yonathan Zetune
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
